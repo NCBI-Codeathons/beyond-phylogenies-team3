@@ -6,8 +6,14 @@ import parse_vcf
 
 app = Flask(__name__)
 
+
 @app.route('/', methods=['GET'])
-def home(): 
+def home():
+    #allows the user to upload a vcf and newick file
+    return(render_template("dropzone.html"))
+
+@app.route('/visualize-tree', methods=['GET'])
+def visualize_tree(): 
     #load tree
     #output tree as string
     #load vcf and output psuedo alignment
