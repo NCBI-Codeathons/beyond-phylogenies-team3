@@ -10,7 +10,7 @@ def parse_newick( tree_loc: str ) -> str:
     """
     tree = Tree.get( path=tree_loc, preserve_underscores=True, schema="newick" )
     tree.ladderize()
-    return tree.as_string( schema="newick" )
+    return tree.as_string( schema="newick" ).strip()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parse a newick file to string object')

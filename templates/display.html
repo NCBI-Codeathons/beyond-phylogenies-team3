@@ -24,15 +24,16 @@
   const { MSAView, MSAModel } = window.ReactMSAView
 
   // Pass msaFilehandle and treeFilehandle if you want to point at a URL of an MSA/tree
+  tree = "{{ tree|safe }}"
   const model = MSAModel.create({
     height: 700,
     id: `${Math.random()}`,
     type: "MsaView",
     msaFilehandle: {uri: 'https://raw.githubusercontent.com/NCBI-Codeathons/beyond-phylogenies-team3/main/example-data/bp_masked_alignment.fasta'},
-    treeFilehandle: {uri: 'https://raw.githubusercontent.com/NCBI-Codeathons/beyond-phylogenies-team3/main/example-data/bp_masked_alignment.nwk'},
     treeAreaWidth: 700,
     treeWidth: 5000,
     rowHeight: 15,
+    data: {tree:tree}
   });
   // Alternatively can
   // const model = MSAModel.create({ id: `${Math.random()}`, type: 'MsaView' })
