@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
   <script>
     window.global = window
@@ -15,24 +15,36 @@
           crossorigin
           src="https://unpkg.com/react-msaview/bundle/index.js"
   ></script>
+  <title>react-msaview demo</title>
 </head>
 <body>
-<div id="root" />
+<div id="root"></div>
 <script>
 
   const { MSAView, MSAModel } = window.ReactMSAView
 
-  // Pass msaFilehandle and treeFilehandle if you want to point at a URL of a MSA/tree
+  // Pass msaFilehandle and treeFilehandle if you want to point at a URL of an MSA/tree
   const model = MSAModel.create({
+    height: 700,
     id: `${Math.random()}`,
     type: "MsaView",
     msaFilehandle: {uri: 'https://raw.githubusercontent.com/NCBI-Codeathons/beyond-phylogenies-team3/main/example-data/bp_masked_alignment.fasta'},
-    treeFilehandle: {uri: 'https://raw.githubusercontent.com/NCBI-Codeathons/beyond-phylogenies-team3/main/example-data/bp_masked_alignment.nwk'}
+    treeFilehandle: {uri: 'https://raw.githubusercontent.com/NCBI-Codeathons/beyond-phylogenies-team3/main/example-data/bp_masked_alignment.nwk'},
+    treeAreaWidth: 700,
+    treeWidth: 5000,
+    rowHeight: 15,
   });
   // Alternatively can
   // const model = MSAModel.create({ id: `${Math.random()}`, type: 'MsaView' })
-  // or pass a string of an msa/tree directly to the "data" field if not pointing to a URL
-  // const model = MSAModel.create({ id: `${Math.random()}`, type: "MsaView", data: {msa:/*string of msa here */} });
+  // or pass a string of a msa/tree directly to the "data" field if not pointing to a URL
+
+  // const msa = "{{ msa }}"
+  // const tree = "{{ tree }}"
+  // const model = MSAModel.create({
+  //   id: `${Math.random()}`,
+  //   type: "MsaView",
+  //   data: {msa:msa, tree:tree}
+  // });
 
   // choose MSA width, calculate width of div/rendering area if needed beforehand
   model.setWidth(1800)
