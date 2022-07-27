@@ -31,6 +31,13 @@ class Variant():
         """
         self.sequence = [self.allele_map[x] for x in info_list]
 
+def to_fasta( entries: list[tuple[str, str]] ) -> str:
+    """
+    Converts list of names and sequences to a fasta string
+    """
+    return_str = "\n".join( [f">{entry[0]}\n{entry[1].decode()}" for entry in entries] )
+    return return_str
+
 def parse_vcf( vcf_loc: str ) -> list[str]:
     variant_collection = []
     with open( vcf_loc, 'r') as vfile:
@@ -48,9 +55,9 @@ def parse_vcf( vcf_loc: str ) -> list[str]:
                 continue
             #this line is the header
             if line.startswith("#"):
-                line_list = line.split("\t")
-                total_files = len(line_list[9:])
-                print("Total files in .vcf:", total_files)
+                header_list = line.split("\t")[9:]
+                total_sequences = len( header_list )
+                print("Total files in .vcf:", total_sequences )
                 continue
      
             #3 is ref 4 is alt
@@ -61,20 +68,21 @@ def parse_vcf( vcf_loc: str ) -> list[str]:
             
             variant_collection.append(new_variant)
 
-    #define a matrix (x,y) where x is the variants and y is the files
-    char_array = np.chararray((len(variant_collection), total_files))
+    #define a matrix (x,y) where x is the variants and y is the sequences
+    char_array = np.chararray((len(variant_collection), total_sequences))
     for count, vc in enumerate(variant_collection):
         char_array[count,:] = vc.sequence
     transposed_array = char_array.T
     list_array = [row.tostring() for row in transposed_array]
 
-    if len(list_array) != total_files:
+    if len(list_array) != total_sequences:
         raise("Error in sequence conversion")
 
-    return(list_array)
+    return( to_fasta( zip( header_list, list_array ) ) )
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Parse a vcf file to object')
     parser.add_argument( '--vcf', help='vcf file to parse' )
     args = parser.parse_args()
-    parse_vcf( vcf_loc=args.vcf )
+    result = parse_vcf( vcf_loc=args.vcf )
+    print( result )
