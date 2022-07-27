@@ -13,7 +13,7 @@ def home():
     return(render_template("dropzone.html"))
 
 @app.route('/visualize-tree', methods=['GET'])
-def visualize_tree(): 
+def visualize_tree():
     #load tree
     #output tree as string
     #load vcf and output psuedo alignment
@@ -21,4 +21,4 @@ def visualize_tree():
     return(render_template("display.html"))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='127.0.0.1', port=5000)
