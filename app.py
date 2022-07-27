@@ -14,10 +14,11 @@ def home():
 
 @app.route('/visualize-tree', methods=['GET'])
 def visualize_tree():
-    #load tree
-    #output tree as string
+    #load tree and output tree as string
+    # TODO: Point tree_loc at file from dropzone.html
     tree = parse_newick.parse_newick( tree_loc="example-data/bp_masked_alignment.nwk" )
-    #load vcf and output psuedo alignment
+    #load vcf and output psuedo-alignment
+    # TODO: point vcf_loc at file from dropzone.html
     vcf = parse_vcf.parse_vcf( vcf_loc="example-data/bp_masked_alignment.vcf" )
     #render the html to webpage
     return( render_template("display.html", tree=tree, msa=vcf ) )
