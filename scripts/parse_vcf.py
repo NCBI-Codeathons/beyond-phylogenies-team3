@@ -14,7 +14,7 @@ class Variant():
         self.allele_map = {}
         self.sequence = []
 
-    def set_allele_map(self, allele_ref, allele_alt):
+    def set_allele_map(self, allele_ref: str, allele_alt: str):
         """
         Maps alleles to numeric values.
         """
@@ -25,21 +25,15 @@ class Variant():
             self.allele_map[str(base_count)] = alt
             base_count += 1
 
-    def assign_info(self, info_list):
+    def assign_info(self, info_list: list):
         """
         Expands the one-hot encoding to actual sequence.
         """
         self.sequence = [self.allele_map[x] for x in info_list]
 
-
-parser = argparse.ArgumentParser(description='Parse a vcf file to object')
-parser.add_argument('--vcf',
-                    help='vcf file to parse')
-args = parser.parse_args()
-
-def main():
+def parse_vcf( vcf_loc: str ) -> list[str]:
     variant_collection = []
-    with open(args.vcf, 'r') as vfile:
+    with open( vcf_loc, 'r') as vfile:
         for count,line in enumerate(vfile):
             line = line.strip()
             #first line needs to be the file format
@@ -78,5 +72,9 @@ def main():
         raise("Error in sequence conversion")
 
     return(list_array)
+
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Parse a vcf file to object')
+    parser.add_argument( '--vcf', help='vcf file to parse' )
+    args = parser.parse_args()
+    parse_vcf( vcf_loc=args.vcf )
