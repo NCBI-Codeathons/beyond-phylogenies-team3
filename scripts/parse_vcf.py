@@ -75,7 +75,7 @@ def parse_vcf( vcf_loc: str ) -> List[str]:
             line_list = line.split("\t")
             new_variant = Variant()
             ref.append( line_list[3] )
-            new_variant.set_allele_map(line_list[3], line_list[4])
+            new_variant.set_allele_map(".", line_list[4])
             new_variant.assign_info(line_list[9:])
 
             variant_collection.append(new_variant)
