@@ -17,6 +17,6 @@ def parse_newick( tree_loc: str ) -> str:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parse a newick file to string object')
-    parser.add_argument('--tree_loc', help='location of newick file')
+    parser.add_argument('--tree', help='location of newick file')
     args = parser.parse_args()
     output = parse_newick( tree_loc=args.tree )
