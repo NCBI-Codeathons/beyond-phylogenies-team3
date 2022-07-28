@@ -32,15 +32,25 @@ class Variant():
         """
         self.sequence = [self.allele_map[x] for x in info_list]
 
-def to_fasta( entries: List[Tuple[str, str]] ) -> str:
+def to_fasta( entries: List[Tuple[str, str]], ref: str ) -> str:
     """
     Converts list of names and sequences to a fasta string
     """
-    return_str = "\n".join( [f">{entry[0]}\n{entry[1].decode()}" for entry in entries] )
+    return_str = [
+        "# STOCKHOLM 1.0",
+        "#=GF ID   EXAMPLE"
+    ]
+    for entry in entries:
+        return_str.append( f"{entry[0]}\t{entry[1].decode()}" )
+
+    return_str.append( f"#=GC seq_cons\t{ref}")
+    return_str.append( "//" )
+    return_str = "\n".join( return_str )
     return return_str
 
 def parse_vcf( vcf_loc: str ) -> List[str]:
     variant_collection = []
+    ref = []
     with open( vcf_loc, 'r') as vfile:
         for count,line in enumerate(vfile):
             line = line.strip()
@@ -64,6 +74,7 @@ def parse_vcf( vcf_loc: str ) -> List[str]:
             #3 is ref 4 is alt
             line_list = line.split("\t")
             new_variant = Variant()
+            ref.append( line_list[3] )
             new_variant.set_allele_map(line_list[3], line_list[4])
             new_variant.assign_info(line_list[9:])
 
@@ -79,7 +90,7 @@ def parse_vcf( vcf_loc: str ) -> List[str]:
     if len(list_array) != total_sequences:
         raise("Error in sequence conversion")
 
-    return( to_fasta( zip( header_list, list_array ) ) )
+    return( to_fasta( zip( header_list, list_array ), "".join( ref ) ) )
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Parse a vcf file to object')

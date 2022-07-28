@@ -1,6 +1,6 @@
-# Team Project Name
+# VISUALIZATION OF CONDENSED MULTIPLE SEQUENCE ALIGNEMENTS AND PHYLOGENETIC TREES
 
-List of participants and affiliations:
+### List of participants and affiliations:
 - Christian Zmasek (czmasek@jcvi.org) - Team leader
 - Chrissy Aceves (caceves@scripps.edu) 
 - Nate Matteson (natem@scripps.edu)
@@ -8,8 +8,20 @@ List of participants and affiliations:
 - Daniel Chen (dchen32@uw.edu)
 - Diana Ir (diana.ir@state.co.us) 
 
+
+## Background 
+Phylogenetic visualization of large multiple sequence alignments is difficult. Since phylogenies are reconstructed based on differences in a multiple sequence alignment (MSA), tools that utilize only the positions with variation in the MSA could improve phylogenetic reconstruction and visualization.
+
 ## Project Goals
-- Develop a drag and drop interface where the user provides (1) a vcf file and (2) a tree file and render a visualization focusing on SNV’s. 
+ We developed a drag and drop interface where the user provides (1) a vcf file and (2) a newick tree file and render a visualization focusing on single nucleotide variants (SNVs). 
+ 
+
+## Prerequisites
+Python 3
+
+## Installation
+
+## Input
 
 ## Approach
 - Possibly write the backend in Python, the frontend in JS, and tie it together in a flask app?
@@ -18,3 +30,4 @@ List of participants and affiliations:
 ## Results
 
 ## Future Work
+test
