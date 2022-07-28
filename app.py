@@ -1,6 +1,5 @@
 import os
 import sys
-import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for
 
 sys.path.insert(1,  "./scripts")
