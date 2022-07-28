@@ -27,20 +27,16 @@ def visualize_tree():
         if files.filename.endswith(".vcf"):
             files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.vcf"))
         elif files.filename.endswith(".nwk"):
-            files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.nwk"))
-        
+            files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.nwk"))        
         return redirect(url_for('visualize_tree'))
 
     elif request.method == "GET":
-        #return(render_template("dropzone.html"))
         f_vcf = os.path.join(app.config['UPLOAD_FOLDER'], "temp.vcf")
         f_tree = os.path.join(app.config['UPLOAD_FOLDER'], "temp.nwk")
          
         #load tree and output tree as string
-        # TODO: Point tree_loc at file from dropzone.html
         tree = parse_newick.parse_newick(tree_loc=f_tree)
         #load vcf and output psuedo-alignment
-        # TODO: point vcf_loc at file from dropzone.html
         vcf = parse_vcf.parse_vcf( vcf_loc=f_vcf )
         #render the html to webpage
         return(render_template("display.html", tree=tree, msa=vcf))
