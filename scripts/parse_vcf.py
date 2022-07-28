@@ -1,12 +1,13 @@
 """
 Parses a vcf file for multiple sequences into a variant object,
-then returns a list of raw strings with each representing the 
+then returns a list of raw strings with each representing the
 collapsed sequence alignment for a single file.
 """
 import os
 import sys
 import argparse
 import numpy as np
+from typing import List, Tuple
 
 class Variant():
     def __init__(self):
@@ -20,25 +21,25 @@ class Variant():
         """
         alt_list = allele_alt.split(",")
         base_count = 1
-        self.allele_map = {"0":allele_ref, ".": allele_ref}        
+        self.allele_map = {"0":allele_ref, ".": allele_ref}
         for alt in alt_list:
             self.allele_map[str(base_count)] = alt
             base_count += 1
 
-    def assign_info(self, info_list: list):
+    def assign_info(self, info_list: List):
         """
         Expands the one-hot encoding to actual sequence.
         """
         self.sequence = [self.allele_map[x] for x in info_list]
 
-def to_fasta( entries: list[tuple[str, str]] ) -> str:
+def to_fasta( entries: List[Tuple[str, str]] ) -> str:
     """
     Converts list of names and sequences to a fasta string
     """
     return_str = "\n".join( [f">{entry[0]}\n{entry[1].decode()}" for entry in entries] )
     return return_str
 
-def parse_vcf( vcf_loc: str ) -> list[str]:
+def parse_vcf( vcf_loc: str ) -> List[str]:
     variant_collection = []
     with open( vcf_loc, 'r') as vfile:
         for count,line in enumerate(vfile):
@@ -59,13 +60,13 @@ def parse_vcf( vcf_loc: str ) -> list[str]:
                 total_sequences = len( header_list )
                 print("Total files in .vcf:", total_sequences )
                 continue
-     
+
             #3 is ref 4 is alt
             line_list = line.split("\t")
             new_variant = Variant()
             new_variant.set_allele_map(line_list[3], line_list[4])
             new_variant.assign_info(line_list[9:])
-            
+
             variant_collection.append(new_variant)
 
     #define a matrix (x,y) where x is the variants and y is the sequences

@@ -1,3 +1,4 @@
+<!-- main section here -->
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -7,18 +8,19 @@
     <FORM class="dropzone needsclick" id="demo-upload" action="/upload">
       <DIV class="dz-message needsclick">
         Drop files here or click to upload.<BR>
-     </DIV>
+      </DIV>
     </FORM>
   </DIV>
-  <DIV class="d-flex justify-content-center">
-    <a href="http://127.0.0.1:5000/visualize-tree" class="btn btn-primary">Visualize Data</a>
+  <DIV id="submit-button">
+    <DIV class="d-flex justify-content-center">
+      <a href="http://127.0.0.1:5000/visualize-tree" class="btn btn-primary">Visualize Data</a>
+    </DIV>
   </DIV>
-</DIV>
 </SECTION>
 
+<!-- appendix section here -->
 <br/>
 <hr size="3" noshade color="#F00000">
-
 <div style="font-size: 0.8em;">
 <DIV id="preview-template" style="display: none;">
 <DIV class="dz-preview dz-file-preview">
