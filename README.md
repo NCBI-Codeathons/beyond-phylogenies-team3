@@ -30,9 +30,8 @@ We developed a drag and drop interface where the user provides (1) a vcf file an
 - [Python 3](#python-3)
 - [dendropy](#dendropy)
 - [flask](#flask)
-   - Install using python: `https://flask.palletsprojects.com/en/2.1.x/installation/`. Flask supports Python 3.7 and newer.
-   - Install using conda: `conda install -c anaconda flask`
-   
+   - Install using python: "https://flask.palletsprojects.com/en/2.1.x/installation/". Flask supports Python 3.7 and newer.
+   - Install using conda: `conda install -c anaconda flask` 
 - [JavaScript](#javascript)
 - [Web-Interface](#web--interface)
 
