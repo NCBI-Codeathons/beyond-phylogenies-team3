@@ -1,5 +1,6 @@
 # VISUALIZATION OF CONDENSED MULTIPLE SEQUENCE ALIGNEMENTS AND PHYLOGENETIC TREES
 
+
 ### List of participants and affiliations:
 - Christian Zmasek (czmasek@jcvi.org) - Team leader
 - Chrissy Aceves (caceves@scripps.edu)
@@ -8,18 +9,32 @@
 - Daniel Chen (dchen32@uw.edu)
 - Diana Ir (diana.ir@state.co.us)
 
-## Background 
+## Table of content
+   1. Introduction
+   2. Project goal
+   3. Prerequisites
+   4. Installation
+   5. Input
+   6. Approach
+   7. Future work
+   
+   
+  
+## Introduction
 Phylogenetic visualization of large multiple sequence alignments is difficult. Since phylogenies are reconstructed based on differences in a multiple sequence alignment (MSA), tools that utilize only the positions with variation in the MSA could improve phylogenetic reconstruction and visualization.
 
-## Project Goals
- We developed a drag and drop interface where the user provides (1) a vcf file and (2) a newick tree file and we render a multiple sequence alignment (MSA) visualization focusing on single nucleotide variants (SNVs).
+## Project goal
+We developed a drag and drop interface where the user provides (1) a vcf file and (2) a newick tree file and we render a multiple sequence alignment (MSA) visualization focusing on single nucleotide variants (SNVs).
 
 ## Prerequisites
 Python 3
 - dendropy
 - flask
-JavaScript
-Web-Interface
+-JavaScript
+-Web-Interface
+
+
+# How to use our tool
 
 ## Installation
 The app can be simply run by executing `python app.py` in the user's command line interface (e.g. Terminal, Command Prompt).
