@@ -27,11 +27,11 @@ Phylogenetic visualization of large multiple sequence alignments is difficult. S
 We developed a drag and drop interface where the user provides (1) a vcf file and (2) a newick tree file and we render a multiple sequence alignment (MSA) visualization focusing on single nucleotide variants (SNVs).
 
 ## Prerequisites
-Python 3
-- dendropy
-- flask
--JavaScript
--Web-Interface
+- [Python 3](#python-3)
+- [dendropy](#dendropy)
+- [flask](#flask)
+- [JavaScript](#javascript)
+- [Web-Interface](#web--interface)
 
 
 # How to use our tool
