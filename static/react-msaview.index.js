@@ -484,7 +484,7 @@
                 : undefined;
             asObservableObject(target).addObservableProp(propertyName, initialValue, enhancer);
         });
-        var res = 
+        var res =
         // Extra process checks, as this happens during module initialization
         typeof process !== "undefined" && process.env && process.env.NODE_ENV !== "production"
             ? function observableDecorator() {
@@ -1284,7 +1284,7 @@
                 });
             }
             var oldValue = this.value;
-            var wasSuspended = 
+            var wasSuspended =
             /* see #1208 */ this.dependenciesState === IDerivationState.NOT_TRACKING;
             var newValue = this.computeValue(true);
             var changed = wasSuspended ||
@@ -49603,7 +49603,7 @@
                 ? runningActions.get(call.parentActionEvent)
                 : undefined;
             if (call.type === "action") {
-                var newCall = __assign$4({}, call, { 
+                var newCall = __assign$4({}, call, {
                     // make a shallow copy of the parent action env
                     env: parentRunningAction && parentRunningAction.call.env, parentCall: parentRunningAction && parentRunningAction.call });
                 var passesFilter = !middlewareHooks.filter || middlewareHooks.filter(newCall);
@@ -59022,7 +59022,7 @@
       // as the regeneratorRuntime namespace. Otherwise create a new empty
       // object. Either way, the resulting object will be used to initialize
       // the regeneratorRuntime variable at the top of this file.
-      module.exports 
+      module.exports
     ));
 
     try {
@@ -88300,11 +88300,11 @@
                 if (drawNodeBubbles) {
                     hierarchy.descendants().forEach(function (node) {
                         var val = showBranchLen ? 'len' : 'y';
-                        var _a = node, 
+                        var _a = node,
                         //@ts-ignore
-                        y = _a.x, 
+                        y = _a.x,
                         //@ts-ignore
-                        _b = val, 
+                        _b = val,
                         //@ts-ignore
                         x = _a[_b], data = _a.data;
                         var _c = data.id, id = _c === void 0 ? '' : _c, _d = data.name, name = _d === void 0 ? '' : _d;
@@ -88338,11 +88338,11 @@
                     ctx.textAlign = 'start';
                 }
                 hierarchy.leaves().forEach(function (node) {
-                    var 
+                    var
                     //@ts-ignore
-                    y = node.x, 
+                    y = node.x,
                     //@ts-ignore
-                    x = node.y, _a = node.data, name = _a.name, id = _a.id, 
+                    x = node.y, _a = node.data, name = _a.name, id = _a.id,
                     //@ts-ignore
                     len = node.len;
                     if (y > offsetY - extendBounds &&
@@ -89113,7 +89113,7 @@
             var visibleLeaves = leaves.slice(yStart, yEnd);
             visibleLeaves.forEach(function (node) {
                 var _a;
-                var 
+                var
                 //@ts-ignore
                 y = node.x, name = node.data.name;
                 var str = (_a = columns[name]) === null || _a === void 0 ? void 0 : _a.slice(xStart, xEnd);
@@ -89134,7 +89134,7 @@
             if (rowHeight >= 10 && colWidth >= rowHeight / 2) {
                 visibleLeaves.forEach(function (node) {
                     var _a;
-                    var 
+                    var
                     //@ts-ignore
                     y = node.x, name = node.data.name;
                     var str = (_a = columns[name]) === null || _a === void 0 ? void 0 : _a.slice(xStart, xEnd);
@@ -89608,15 +89608,18 @@
 
     var InfoArea = observer(function (_a) {
         var model = _a.model;
-        var mouseOverRowName = model.mouseOverRowName, mouseCol = model.mouseCol;
+        var mouseOverRowName = model.mouseOverRowName;
+        var mouseOverRowData = model.columns2d[model.mouseRow];
+        if (typeof(mouseOverRowData) === "string") {
+          mouseOverRowData = mouseOverRowData.substr(model.mouseCol - 1, 1);
+        }
         return (React__default["default"].createElement("div", null,
             React__default["default"].createElement(Typography$2, { display: "inline" },
                 "Row name: ",
                 mouseOverRowName),
             React__default["default"].createElement("span", { style: { marginLeft: 10 } }),
             React__default["default"].createElement(Typography$2, { display: "inline" },
-                "Position: ",
-                mouseCol)));
+                "Residue: ", mouseOverRowData)));
     });
     var Header = observer(function (_a) {
         var model = _a.model;
@@ -96753,9 +96756,6 @@
                 ? this.rowNames[self.mouseRow]
                 : undefined;
         },
-        getMouseOverResidue: function (rowName) {
-            return this.columns[rowName];
-        },
         get root() {
             var hier = hierarchy(this.tree, function (d) { return d.branchset; })
                 .sum(function (d) { return (d.branchset ? 0 : 1); })
@@ -96831,11 +96831,6 @@
             })
                 .filter(function (f) { return !!f[1]; });
         },
-        get columns() {
-            var rows = this.rows;
-            var cols = this.columns2d;
-            return Object.fromEntries(rows.map(function (row, index) { return [row[0], cols[index]]; }));
-        },
         get columns2d() {
             var strs = this.rows.map(function (r) { return r[1]; });
             var ret = [];
@@ -96843,6 +96838,14 @@
                 ret.push(skipBlanks(this.blanks, strs[i]));
             }
             return ret;
+        },
+        get columns() {
+            var rows = this.rows;
+            var cols = this.columns2d;
+            return Object.fromEntries(rows.map(function (row, index) { return [row[0], cols[index]]; }));
+        },
+        getMouseOverResidue: function (rowName) {
+            return this.columns[rowName];
         },
         get colStats() {
             var r = [];
@@ -96866,7 +96869,7 @@
                 .size([this.totalHeight, self.treeWidth])
                 .separation(function () { return 1; });
             clust(root);
-            setBrLength(root, 
+            setBrLength(root,
             //@ts-ignore
             (root.data.length = 0), self.treeWidth / maxLength(root));
             return root;
