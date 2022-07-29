@@ -30,6 +30,9 @@ We developed a drag and drop interface where the user provides (1) a vcf file an
 - [Python 3](#python-3)
 - [dendropy](#dendropy)
 - [flask](#flask)
+   - Install using python: `https://flask.palletsprojects.com/en/2.1.x/installation/`. Flask supports Python 3.7 and newer.
+   - Install using conda: `conda install -c anaconda flask`
+   
 - [JavaScript](#javascript)
 - [Web-Interface](#web--interface)
 
@@ -37,8 +40,9 @@ We developed a drag and drop interface where the user provides (1) a vcf file an
 # How to use our tool
 
 ## Installation
-Download the `python app.py` at ""
-The app can be simply run by executing `python app.py` in the user's command line interface (e.g. Terminal, Command Prompt).
+1. Download the `app.py` from "https://github.com/NCBI-Codeathons/beyond-phylogenies-team3/blob/main/app.py" in your current directory
+2. The app can be simply run by executing `python app.py` in the user's command line interface (e.g. Terminal, Command Prompt).
+
 
 ## Input
 Example VCF and Newick (also called New-Hampshire) file formats are provided in the  `example-data` folder. Upload the files at "http://127.0.0.1:5000/" then click "Visualize Data" and it will render.
