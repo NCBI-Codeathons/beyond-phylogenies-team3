@@ -10,16 +10,16 @@
 - Diana Ir (diana.ir@state.co.us)
 
 ## Table of content
-   1. Introduction
-   2. Project goal
-   3. Prerequisites
-   4. Installation
-   5. Input
-   6. Approach
-   7. Future work
+1. [Introduction](#introduction)
+2. [Project goal](#project-goal)
+3. [Prerequisites](#prerequisites)
+4. [Installment](#installment)
+5. [Input](#input)
+6. [Approach](#approach)
+7. [Future work](#future-work)
+
    
-   
-  
+
 ## Introduction
 Phylogenetic visualization of large multiple sequence alignments is difficult. Since phylogenies are reconstructed based on differences in a multiple sequence alignment (MSA), tools that utilize only the positions with variation in the MSA could improve phylogenetic reconstruction and visualization.
 
