@@ -37,6 +37,7 @@ We developed a drag and drop interface where the user provides (1) a vcf file an
 # How to use our tool
 
 ## Installation
+Download the `python app.py` at ""
 The app can be simply run by executing `python app.py` in the user's command line interface (e.g. Terminal, Command Prompt).
 
 ## Input
