@@ -8,7 +8,7 @@
 - Daniel Chen (dchen32@uw.edu)
 - Diana Ir (diana.ir@state.co.us)
 
-## Background 
+## Background
 Phylogenetic visualization of large multiple sequence alignments is difficult. Since phylogenies are reconstructed based on differences in a multiple sequence alignment (MSA), tools that utilize only the positions with variation in the MSA could improve phylogenetic reconstruction and visualization.
 
 ## Project Goals
@@ -39,4 +39,4 @@ Example VCF and Newick (also called New-Hampshire) file formats are provided in 
 - Highlight items on the tree itself
 - Real-time calculation of clade-defining substitutions
 - Increased options and flexibility in design/algorithms utilized
-- More fleshed out website and user interface
+- Hovering over residue belays its current value and reference value

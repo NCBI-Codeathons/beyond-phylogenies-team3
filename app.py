@@ -26,13 +26,13 @@ def visualize_tree():
         if files.filename.endswith(".vcf"):
             files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.vcf"))
         elif files.filename.endswith(".nwk"):
-            files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.nwk"))        
+            files.save(os.path.join(app.config['UPLOAD_FOLDER'],"temp.nwk"))
         return redirect(url_for('visualize_tree'))
 
     elif request.method == "GET":
         f_vcf = os.path.join(app.config['UPLOAD_FOLDER'], "temp.vcf")
         f_tree = os.path.join(app.config['UPLOAD_FOLDER'], "temp.nwk")
-         
+
         #load tree and output tree as string
         tree = parse_newick.parse_newick(tree_loc=f_tree)
         #load vcf and output psuedo-alignment
