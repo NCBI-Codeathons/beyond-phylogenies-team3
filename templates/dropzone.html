@@ -31,7 +31,7 @@
             </div>
             <center>
             <div class="d-flex justify-content-center">
-              <button class="block" onclick="testFunction()">Submit VCF</button>
+              <button class="block" onclick="testFunction()">Submit Files</button>
             </div>
             </center>
           <div class="col-md-2" id=""></div>
@@ -45,12 +45,12 @@
      function testFunction() {
         validatedropzone.processQueue();
      }
-    
+
    validatedropzone.on("queuecomplete", function(file) {
     // Called when all files in the queue finish uploading.
     window.location = "{{ url_for('visualize_tree') }}";
   });
-    
+
 </script>
 
 <style>
